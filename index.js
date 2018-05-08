@@ -15,6 +15,7 @@ io.on('connection', socket => {
     if (io.sockets.adapter.rooms[code] && io.sockets.adapter.rooms[code].length === 1) {
       // A user is in the room. The user can join the room
       socket.join(code)
+      socket.emit(senderId, 200)
     } else if (io.sockets.adapter.rooms[code] && io.sockets.adapter.rooms[code].length === 2) {
       // Two users are in the room. No new user can join a room
       socket.emit(senderId, 'This room is full')
